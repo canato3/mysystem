@@ -1,0 +1,46 @@
+<body>
+    <header>
+        <div class="container">
+            <center><h1>洋楽を用いた英語ディクテーション学習サイト</h1>
+            <div class="account">
+
+                    <a href="{% url 'app:signup' %}">アカウント登録</a>
+
+            </div>
+        </div>
+        <style>
+        h1{
+          line-height:260px;
+          text-align:center;
+          font-size:3em;
+
+        }
+        .account{
+          line-height:50px;
+          text-align:center;
+          font-size:2em;
+
+        }
+        </style>
+    </header>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+
+</body>
+
+<center><h2>ログイン</h2>
+
+<center><form class="form-signin" method="post">{% csrf_token %}
+    {% if form.errors %}
+        <p>ユーザー名かパスワードが間違っています。もう一度入力してください。</p>
+    {% endif %}
+    <label>ユーザー名</label>
+    <input name="username">
+    <br>
+    <label>パスワード</label>
+    <input type="password" name="password">
+    <br>
+    <input type="submit" value="ログイン">
+</form>

@@ -1,0 +1,36 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
+
+<h2 class="user-name">@{{ user.username }}さん</h2>
+
+<div class=to-jh>
+    <h3><a href="/">中学生向け問題へ</a></h3>
+
+</div>
+
+<style>
+.to-jh{
+  line-height:250px;
+  margin-left:350px;
+  font-size:1.4em;
+  float:left;
+
+}
+</style>
+<div class=to-h>
+<h3><a href="/">高校生向け問題へ</a></h3>
+
+</div>
+
+<style>
+.to-h{
+line-height:308px;
+margin-left:800px;
+font-size:1.4em;
+
+
+}
+</style>
+
+{% endblock %}
