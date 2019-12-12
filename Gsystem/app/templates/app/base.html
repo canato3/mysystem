@@ -15,11 +15,13 @@
             <div class="header-menu1">
 
                 {% if request.user.is_authenticated %}
-                    <a href="{% url 'app:users_detail' request.user.id %}">マイページ</a>
-                    <a href="{% url 'app:logout' %}">ログアウト</a>
+
+                <a href="{% url 'app:users_detail' request.user.id %}">マイページ</a>
+                <a href="{% url 'app:logout' %}">ログアウト</a>
+                
             </div>
 
-            
+
               <div class="header-menu2">
                 {% else %}
                     <a href="{% url 'app:login' %}">ログイン</a>

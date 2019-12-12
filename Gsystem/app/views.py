@@ -1,9 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
-
-
 from app.forms import CustomUserCreationForm
+
 
 def index(request):
     return render(request, 'app/index.html')
@@ -25,11 +24,10 @@ def signup(request):
             if new_user is not None:
 
                 login(request, new_user)
-                return redirect('app:users_detail', pk=new_user.pk)
+                return redirect('app/users_detail.html', pk=new_user.pk)
     else:
         form = CustomUserCreationForm()
     return render(request, 'app/signup.html', {'form': form})
-
 
 
 
