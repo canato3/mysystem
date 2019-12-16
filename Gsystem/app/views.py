@@ -24,10 +24,14 @@ def signup(request):
             if new_user is not None:
 
                 login(request, new_user)
-                return redirect('app/users_detail.html', pk=new_user.pk)
+                return redirect('app:users_detail', pk=new_user.pk)
     else:
         form = CustomUserCreationForm()
     return render(request, 'app/signup.html', {'form': form})
+
+def JHstart(request):
+
+    return render(request, 'app/JHstart.html')
 
 
 
