@@ -33,6 +33,10 @@ def JHstart(request):
 
     return render(request, 'app/JHstart.html')
 
+def Hstart(request):
+
+    return render(request, 'app/Hstart.html')
+
 
 
 # Create your views here.

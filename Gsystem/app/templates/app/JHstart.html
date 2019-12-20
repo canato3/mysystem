@@ -1,36 +1,14 @@
+{% extends 'app/base.html' %}
 
+{% block content %}
 <html>
 
     <body>
 
       <header>
-          <div class="container">
-              <center><h1>洋楽を用いた英語ディクテーション学習サイト</h1>
 
-          </div>
-          <h2 class="user-name">@{{ user.username }}さん</h2>
-          <div class="header-menu">
+          <center><h2 class="user-name">@{{ user.username }}さん</h2>
 
-
-              <a href="{% url 'app:users_detail' request.user.id %}">マイページ</a>
-              <a href="{% url 'app:logout' %}">ログアウト</a>
-
-          </div>
-          <style>
-          h1{
-            line-height:260px;
-            text-align:center;
-            font-size:3em;
-
-          }
-          .header-menu{
-            line-height:50px;
-            text-align:center;
-            font-size:2em;
-
-          }
-
-          </style>
       </header>
         <div>
             <h1 align="center">中学生向け問題</h1>
@@ -60,3 +38,4 @@
         </div>
     </body>
 </html>
+{% endblock %}

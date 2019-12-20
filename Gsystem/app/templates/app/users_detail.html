@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h2 class="user-name">@{{ user.username }}さん</h2>
+<center><h2 class="user-name">@{{ user.username }}さん</h2>
 
 <div class=to-jh>
     <h3><a href="{% url 'app:JHstart' %}">中学生向け問題へ</a></h3>
@@ -19,7 +19,7 @@
 }
 </style>
 <div class=to-h>
-<h3><a href="/">高校生向け問題へ</a></h3>
+<h3><a href="{% url 'app:Hstart' %}">高校生向け問題へ</a></h3>
 
 </div>
 

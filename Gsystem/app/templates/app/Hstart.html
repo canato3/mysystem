@@ -1,21 +1,38 @@
+{% extends 'app/base.html' %}
+
+{% block content %}
 <html>
-    <head>
-        <title>My graduate System</title>
-    </head>
+
     <body>
+
+      <header>
+
+          <center><h2 class="user-name">@{{ user.username }}さん</h2>
+
+      </header>
+
         <div>
             <h1 align="center">高校生向け問題</h1>
         </div>
-        <br>
-        <div>
-            <p style="text-align:center;">＜ルール説明＞</p>
+
+        <style>
+        h1{
+          line-height:200px;
+          text-align:center;
+          font-size:3em;
+
+        }
+        </style>
+
+
+            <p style="text-align:center;"><font size="5">＜ルール説明＞</p>
             <p style="text-align:center;">1.候補の曲の中からランダムで5問出題されます。</p>
             <p style="text-align:center;">2.問題はフレーズ単位で出題されます。</p>
             <p style="text-align:center;">3.穴埋めは1問につき2.3個あり、高校生が学ぶ範囲の単語が穴埋めとなります。</p>
             <p style="text-align:center;">4.曲を聞いて穴埋めに入る単語を入力します。</p>
             <br>
 
-        </div>
+
 
         <div>
             <h2 align="center"><a href="/">スタート</a></h2>
@@ -23,3 +40,4 @@
         </div>
     </body>
 </html>
+{% endblock %}
