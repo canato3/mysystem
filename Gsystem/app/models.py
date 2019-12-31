@@ -14,15 +14,19 @@ class Song(models.Model):
     #song=
     song_name=models.CharField(max_length=40)
     release_year=models.IntegerField()
-    url=models.URLField()
+    url=models.CharField(max_length=800)
     lyrics=models.TextField()
+
+    def __str__(self):
+        return self.song_name
 
 class Question(models.Model):
     #question=
     song=models.ForeignKey(Song,on_delete=models.CASCADE)
-    question=models.CharField(max_length=80)
+    question=models.CharField(max_length=500)
     start_time=models.IntegerField()
     finish_time=models.IntegerField()
+
 
 class History(models.Model):
     test=models.ForeignKey(Test,on_delete=models.CASCADE)

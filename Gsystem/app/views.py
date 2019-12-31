@@ -37,6 +37,9 @@ def Hstart(request):
 
     return render(request, 'app/Hstart.html')
 
+def answer(request):
+    return render(request, 'app/answer.html')
+
 
 
 # Create your views here.
