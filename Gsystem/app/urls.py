@@ -11,5 +11,7 @@ urlpatterns = [
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('JHstart/',views.JHstart,name='JHstart'),
     path('Hstart/',views.Hstart,name='Hstart'),
+    path('JHquestion/',views.JHquestion,name='JHquestion'),
+    path('Hquestion/',views.Hquestion,name='Hquestion'),
     path('answer/',views.answer,name='answer'),
 ]

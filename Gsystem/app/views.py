@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from app.forms import CustomUserCreationForm
+from .models import Question
 
 
 def index(request):
@@ -36,6 +37,15 @@ def JHstart(request):
 def Hstart(request):
 
     return render(request, 'app/Hstart.html')
+
+def JHquestion(request):
+
+    questions = Question.objects.all()
+    return render(request, 'app/JHquestion.html',{'questions': questions})
+
+def Hquestion(request):
+
+    return render(request, 'app/Hquestion.html')
 
 def answer(request):
     return render(request, 'app/answer.html')
