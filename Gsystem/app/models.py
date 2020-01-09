@@ -12,8 +12,8 @@ class Test(models.Model):
 
 class Song(models.Model):
     #song=
+    singer=models.CharField(max_length=30,null=True)
     song_name=models.CharField(max_length=40)
-    release_year=models.IntegerField()
     url=models.CharField(max_length=800)
     lyrics=models.TextField()
 

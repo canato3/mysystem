@@ -18,7 +18,7 @@
 
                 <a href="{% url 'app:users_detail' request.user.id %}">マイページ</a>
                 <a href="{% url 'app:logout' %}">ログアウト</a>
-                
+
             </div>
 
 
@@ -58,3 +58,10 @@
 </body>
 
 </html>
+
+{% for question in questions %}
+  <div>
+      <h2><a href="">{{ question.song }}</a></h2>
+  </div>
+
+{% endfor %}

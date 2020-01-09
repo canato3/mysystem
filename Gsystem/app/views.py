@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import get_user_model
 from app.forms import CustomUserCreationForm
 from .models import Question
+from .models import Song
 
 
 def index(request):
@@ -40,8 +41,9 @@ def Hstart(request):
 
 def JHquestion(request):
 
-    questions = Question.objects.all()
-    return render(request, 'app/JHquestion.html',{'questions': questions})
+    songs = Song.objects.all()
+    return render(request, 'app/JHquestion.html',{'songs': songs},)
+
 
 def Hquestion(request):
 
