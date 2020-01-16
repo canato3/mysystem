@@ -13,5 +13,6 @@ urlpatterns = [
     path('Hstart/',views.Hstart,name='Hstart'),
     path('JHquestion/',views.JHquestion,name='JHquestion'),
     path('Hquestion/',views.Hquestion,name='Hquestion'),
-    path('answer/',views.answer,name='answer'),
+    path('JHanswer/',views.JHanswer,name='JHanswer'),
+    path('Hanswer/',views.Hanswer,name='Hanswer'),
 ]
