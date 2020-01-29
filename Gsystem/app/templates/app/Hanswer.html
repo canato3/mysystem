@@ -1,68 +1,32 @@
 <html>
     <head>
-        <title>My graduate System</title>
+        <title>洋楽を用いた英語ディクテーション学習システム</title>
 
     </head>
 
     <body>
         <div>
-            <h1 align="center">1問目</h1>
-            <h1 align="center">Guns N' Roses - Don't Cry</h1>
-            <h1 align="center">解答</h1>
+            <center><h1>{{song.singer}}　-　{{song.song_name}}</h1>
+            <h1 align="center"><font color="red">解答</font></h1>
         </div>
 
         <div>
-           <h2 class="this">This song is</h2>
-           <h2 class="answer1">pretty</h2>
-           <h2 class="nice">nice</h2>
-           <h2 class="especially">Especially</h2>
-           <h2 class="answer2">lyrics</h2>
-           <h2 class="is">is my favorite</h2>
-
+               <center><h2>{{question.question}}</h2>
         </div>
+        <style>
+        h2{
+          line-height:260px;
+          text-align:center;
+          font-size:2em;
 
+        }
 
-       <style>
+        </style>
 
-         .this{
-            line-height:200px;
-            font-size:3.3em;
-            position:absolute;left:30%;top:13%;
-
-           }
-
-         .answer1{
-           line-height:200px;
-           font-size:3.3em;
-           position:absolute;left:51%;top:13%;
-           color:#ff0000;
-         }
-         .nice{
-           line-height:200px;
-           font-size:3.3em;
-           position:absolute;left:62%;top:13%;
-         }
-         .especially{
-           line-height:200px;
-           font-size:3.3em;
-           position:absolute;left:28%;top:25%;
-         }
-
-         .answer2{
-           line-height:200px;
-           font-size:3.3em;
-           position:absolute;left:46%;top:25%;
-           color:#ff0000;
-         }
-
-         .is{
-           line-height:200px;
-           font-size:3.3em;
-           position:absolute;left:56%;top:25%;
-         }
-
-      </style>
-
-      <button type=“button” onclick="location.href='' "style= "position:absolute; left:47%; top:76%; width:120px; height:40px">2問目へ</button>
+      <form method="POST" action="/JHquestion/">
+        {% csrf_token %}
+        <input type="hidden" name="question_seq" value="{{question_seq|add:1}}">
+        <input type="submit" value="{{question_seq|add:1}}問目へ" style="position:absolute; left:47%; top:76%; width:120px; height:40px">
+      </form>
   </body>
 </html>

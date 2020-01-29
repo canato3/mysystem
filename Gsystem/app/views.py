@@ -4,13 +4,15 @@ from django.contrib.auth import get_user_model
 from app.forms import CustomUserCreationForm
 from .models import Question
 from .models import Song
+from .models import Test
 import re
 from html import escape
+#MYDO
+import random
+import sqlite3
 
 def index(request):
     return render(request, 'app/index.html')
-
-
 
 def users_detail(request, pk):
     user = get_object_or_404(get_user_model(), pk=pk)
@@ -44,7 +46,13 @@ def Hstart(request):
 
 def JHquestion(request):
     # TODO: どの問題を出すか決める
-    question_id = 2
+    question_id = 3
+    # MYDO:
+    #候補1　: 1問ずつ取り出してそれをquestion_idに入れる
+    #questionall = Question.objects.values_list('question_id',flat=True)
+    #for i in range(5):
+        #x = random.choice(questionall)
+        #question_id = x
 
     #　何問目か（情報がなければ1問目ってことで）
     try:
@@ -56,17 +64,45 @@ def JHquestion(request):
     song = Song.objects.get(pk=question.song.pk)
 
     # 問題文中の [] で囲まれた部分を <input name="answer">タグに変換
-    question_string = re.sub(r'\[[^]]+\]', f'<input type="text" name="answers">', escape(question.question))
+    question_string = re.sub(r'\[[^]]+\]', f'<input type="text" n   ame="answers">', escape(question.question))
 
     return render(request, 'app/JHquestion.html',
                             {'song': song,
                              'question': question,
                              'question_id': question_id,
                              'question_seq': question_seq,
-                             'question_string': question_string})
+                             'question_string': question_string
+                             })
 
 def Hquestion(request):
-    return render(request, 'app/Hquestion.html')
+    # TODO: どの問題を出すか決める
+    question_id = 3
+    # MYDO:
+    #候補1　: 1問ずつ取り出してそれをquestion_idに入れる
+    #questionall = Question.objects.values_list('question_id',flat=True)
+    #for i in range(5):
+        #x = random.choice(questionall)
+        #question_id = x
+
+    #　何問目か（情報がなければ1問目ってことで）
+    try:
+        question_seq = int(request.POST.get('question_seq'))
+    except TypeError:
+        question_seq = 1
+
+    question = Question.objects.get(pk=question_id)
+    song = Song.objects.get(pk=question.song.pk)
+
+    # 問題文中の [] で囲まれた部分を <input name="answer">タグに変換
+    question_string = re.sub(r'\[[^]]+\]', f'<input type="text" n   ame="answers">', escape(question.question))
+
+    return render(request, 'app/Hquestion.html',
+                            {'song': song,
+                             'question': question,
+                             'question_id': question_id,
+                             'question_seq': question_seq,
+                             'question_string': question_string
+                             })
 
 def JHanswer(request):
     question_id = request.POST.get('question_id')
@@ -77,7 +113,20 @@ def JHanswer(request):
     answers = request.POST.getlist('answers')
 
     # TODO: １問目の解答だった場合には、まずデータベースにtestを作成する
+    # MYDO
+    #if question_seq is 1
+       #conn = sqlite3.connect('db.sqlite3')
+       #c = conn.cursor()
+       #sql = 'insert into Test values(?,?)'
+       #c.execute(sql)
+
     # TODO: 前のページから受け取った解答をデータベースに記録する
+    # MYDO
+    #sql = 'insert into History values (?,?,?,?)'
+    #c.execute(sql)
+
+    #conn.commit()
+    #conn.close()
 
     return render(request, 'app/JHanswer.html',
                            {'song': song,
@@ -85,6 +134,32 @@ def JHanswer(request):
                             'question_seq': question_seq})
 
 def Hanswer(request):
-    return render(request, 'app/Hanswer.html')
+    question_id = request.POST.get('question_id')
+    question = Question.objects.get(pk=question_id)
+    song = Song.objects.get(pk=question.song.pk)
+    question_seq = request.POST.get('question_seq')
+    # 問題ページで入力された回答のリスト
+    answers = request.POST.getlist('answers')
+
+    # TODO: １問目の解答だった場合には、まずデータベースにtestを作成する
+    # MYDO
+    #if question_seq is 1
+       #conn = sqlite3.connect('db.sqlite3')
+       #c = conn.cursor()
+       #sql = 'insert into Test values(?,?)'
+       #c.execute(sql)
+
+    # TODO: 前のページから受け取った解答をデータベースに記録する
+    # MYDO
+    #sql = 'insert into History values (?,?,?,?)'
+    #c.execute(sql)
+
+    #conn.commit()
+    #conn.close()
+
+    return render(request, 'app/Hanswer.html',
+                           {'song': song,
+                            'question':question,
+                            'question_seq': question_seq})
 
 # Create your views here.

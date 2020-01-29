@@ -27,7 +27,6 @@ class Question(models.Model):
     start_time=models.IntegerField()
     finish_time=models.IntegerField()
 
-
 class History(models.Model):
     test=models.ForeignKey(Test,on_delete=models.CASCADE)
     turn=models.IntegerField()

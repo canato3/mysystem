@@ -11,12 +11,20 @@
         </div>
 
         <div>
-               <center><h1>{{question.question}}</h1>
+               <center><h2>{{question.question}}</h2>
         </div>
+        <style>
+        h2{
+          line-height:260px;
+          text-align:center;
+          font-size:2em;
+
+        }
+
+        </style>
 
       <form method="POST" action="/JHquestion/">
         {% csrf_token %}
-        TODO:５問目の時は飛ぶ先を変える必要あり
         <input type="hidden" name="question_seq" value="{{question_seq|add:1}}">
         <input type="submit" value="{{question_seq|add:1}}問目へ" style="position:absolute; left:47%; top:76%; width:120px; height:40px">
       </form>
